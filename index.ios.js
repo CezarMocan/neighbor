@@ -9,10 +9,13 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  NavigatorIOS,
+  TouchableHighlight
 } from 'react-native';
 
 import MapView from 'react-native-maps';
+import Home from './src/Home'
 
 export default class neighbor extends Component {
 
@@ -33,14 +36,23 @@ export default class neighbor extends Component {
     this.setState({ region });
   }
 
+/*
+  <MapView
+    style={styles.map}
+    region={this.state.region}
+    onRegionChange={this.onRegionChange}
+  />
+*/
+
   render() {
-    console.log('render')
-    console.log(this.state.region)
     return (
-      <MapView
-        style={styles.map}
-        region={this.state.region}
-        onRegionChange={this.onRegionChange}
+      <NavigatorIOS
+        initialRoute={{
+          component: Home,
+          title: 'Home',
+        }}
+        style={{flex: 1}}
+        navigationBarHidden={true}
       />
     );
   }
@@ -57,12 +69,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   map: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
+    ...StyleSheet.absoluteFillObject,  
   },
+  home: {
+    //flex: 1,
+    //flexDirection: 'column',
+    //justifyContent: 'center',
+    //alignItems: 'center',
+    padding: 100
+  }
 });
 
 AppRegistry.registerComponent('neighbor', () => neighbor);
