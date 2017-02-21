@@ -52,7 +52,7 @@ export default class neighbor extends Component {
           title: 'Home',
         }}
         style={{flex: 1}}
-        navigationBarHidden={true}
+        navigationBarHidden={false}
       />
     );
   }

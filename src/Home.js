@@ -11,23 +11,23 @@ import {
   Text,
   View,
   Navigator,
-  TouchableHighlight
+  TouchableOpacity
 } from 'react-native';
 
-import Camera from './Camera'
+import PhotoCapture from './PhotoCapture'
 //import MapView from 'react-native-maps';
 
 class Home extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props)
+    //console.log(props)
     this._onForward = this._onForward.bind(this)
   }
 
   _onForward() {
     this.props.navigator.push({
-      component: Camera,
-      title: 'Camera',
+      component: PhotoCapture,
+      title: 'Photo Capture',
     });
   }
 
@@ -35,9 +35,9 @@ class Home extends React.Component {
     return (
       <View style={{padding: 100}}>
         <Text>Current Scene: { this.props.route.title }</Text>
-        <TouchableHighlight onPress={this._onForward}>
+        <TouchableOpacity onPress={this._onForward}>
           <Text>Tap me to load the next scene</Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     );
   }
